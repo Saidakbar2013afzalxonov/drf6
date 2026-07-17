@@ -2,14 +2,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("employees/", views.EmployeeListAPIView.as_view()),
-    path("employee/<int:pk>/", views.EmployeeRetrieveAPIView.as_view()),
-    path("employee/create/", views.EmployeeCreateAPIView.as_view()),
-    path("employee/update/<int:pk>/", views.EmployeeUpdateAPIView.as_view()),
-    path("employee/delete/<int:pk>/", views.EmployeeDestroyAPIView.as_view()),
-
-    path("employees2/", views.EmployeeListCreateAPIView.as_view()),
-    path("employee/ru/<int:pk>/", views.EmployeeRetrieveUpdateAPIView.as_view()),
-    path("employee/rd/<int:pk>/", views.EmployeeRetrieveDestroyAPIView.as_view()),
-    path("employee/rud/<int:pk>/", views.EmployeeRetrieveUpdateDestroyAPIView.as_view()),
+    path("employees/", views.EmployeeListAPIView.as_view(), name="employees-list"),
+    path("employees/create/", views.EmployeeCreateAPIView.as_view(), name="employees-create"),
+    path("employees/<int:pk>/", views.EmployeeRetrieveAPIView.as_view(), name="employees-detail"),
+    path("employees/<int:pk>/update/", views.EmployeeUpdateAPIView.as_view(), name="employees-update"),
+    path("employees/<int:pk>/delete/", views.EmployeeDestroyAPIView.as_view(), name="employees-delete"),
+    path("employees/list-create/", views.EmployeeListCreateAPIView.as_view(), name="employees-list-create"),
+    path("employees/<int:pk>/retrieve-update/", views.EmployeeRetrieveUpdateAPIView.as_view(), name="employees-retrieve-update"),
+    path("employees/<int:pk>/retrieve-destroy/", views.EmployeeRetrieveDestroyAPIView.as_view(), name="employees-retrieve-destroy"),
+    path("employees/<int:pk>/retrieve-update-destroy/",views.EmployeeRetrieveUpdateDestroyAPIView.as_view(),name="employees-retrieve-update-destroy"),
 ]
